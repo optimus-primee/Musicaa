@@ -4,7 +4,7 @@ import Logo from "../Images/logo.svg"
 import { SidebarData } from "../data/SidebarData"
 import { Link } from "react-router-dom"
 import { IconContext } from "react-icons"
-
+import {HiMenuAlt4} from "react-icons/hi"
 
 function Sidebar() {
  
@@ -30,7 +30,14 @@ function Sidebar() {
             </span>
 
           </div>
+          <div className="flex items-center gap-2">
           <img className='ml-[27px] mt-6' src={Logo} alt='' />
+          <div className="sm:hidden flex mt-6 ">
+       <IconContext.Provider value={{size:"30px",color:"#EFEEE040"}}>
+       <HiMenuAlt4 />
+       </IconContext.Provider>
+          </div>
+          </div>
           <nav className="hidden xl:block">
             <ul className=' bg-[#1A1E1F] px-4 rounded-[32px] pb-8 ml-5 mt-[39px]'>
               {SidebarData.map((item, index) => {
