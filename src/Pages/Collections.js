@@ -18,9 +18,10 @@ function Collections() {
 
         transition: { duration: 0.5, ease: "easeIn" },
       }}
+      className="overflow-x-hidden"
     >
       <Search />
-      <div className='ml-[6rem] '>
+      <div className='px-[23px] sm:ml-[6rem] '>
         <div className='flex space-x-[10px] items-center mb-[23px]'>
           <button className='py-[10px] px-[17.5px] bg-[#FACD66] rounded-[27px]'>
             My Collection
