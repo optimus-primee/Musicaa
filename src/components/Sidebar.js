@@ -5,7 +5,7 @@ import { SidebarData } from "../data/SidebarData";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { HiMenuAlt4 } from "react-icons/hi";
-import { AiOutlineClose } from "react-icons/ai"
+import { AiOutlineClose } from "react-icons/ai";
 
 function Sidebar() {
   const [image, setImage] = useState(
@@ -39,19 +39,21 @@ function Sidebar() {
           </div>
           <div className=" sm:hidden ">
             <nav className={navbar ? " nav-menu active" : " nav-menu"}>
-              <ul
-                className="block sm:flex sm:flex-row gap-[74px] px-6 "
-                
-              >
+              <ul className="block sm:flex sm:flex-row gap-[74px] px-6 ">
                 <li className="flex justify-end ">
-                <AiOutlineClose className="text-white mt-10 text-[23px] " />
-              </li>
+                  <AiOutlineClose className="text-white mt-10 text-[23px] " />
+                </li>
                 {SidebarData.map((item, index) => {
                   return (
-                    <li className="pt-8 active flex gap-5 text-[#EFEEE040] font-bold" key={index}
-                    onClick={showSidebar}>
-                      <Link to={item.path}>{item.icon}</Link>
-                      <h6>{item.title}</h6>
+                    <li
+                      className="pt-8 active flex gap-5 text-[#EFEEE040] font-bold"
+                      key={index}
+                      onClick={showSidebar}
+                    >
+                      <Link to={item.path} className="flex gap-5 text-[#EFEEE040] font-bold">
+                        <div>{item.icon}</div>
+                        <h6>{item.title}</h6>
+                      </Link>
                     </li>
                   );
                 })}
