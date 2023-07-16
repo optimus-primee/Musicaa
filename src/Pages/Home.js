@@ -33,6 +33,7 @@ function Home() {
 
         transition: { duration: 0.5, ease: "easeIn" },
       }}
+      className="overflow-x-hidden"
     >
       <Search />
       <div className=' px-[23px] sm:ml-[6rem] text-white'>
