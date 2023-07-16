@@ -64,7 +64,7 @@ function Controls() {
     <>
       <div>
         <div className="w-full py-8   h-[125px] z-10  fixed bottom-0 bg-[rgba(29,33,35,0.3)] backdrop-blur-xl ">
-          <div className="flex justify-between items-center sm:px-[101px]">
+          <div className="flex justify-between items-center px-5 sm:px-[101px]">
             <div className="flex items-center">
               <div className="w-[49px]">
                 <div className="w-[100%] h-[49px]">
