@@ -48,9 +48,10 @@ function Sidebar() {
               </li>
                 {SidebarData.map((item, index) => {
                   return (
-                    <li className="pt-8 active" key={index}
+                    <li className="pt-8 active flex gap-5 text-[#EFEEE040] font-bold" key={index}
                     onClick={showSidebar}>
                       <Link to={item.path}>{item.icon}</Link>
+                      <h6>{item.title}</h6>
                     </li>
                   );
                 })}
