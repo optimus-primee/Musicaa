@@ -21,6 +21,7 @@ import Controls from "../components/Controls"
 import Popular from "../components/playlist/Popular"
 import Currentlyplaying from "../Images/Hypertension.jpeg"
 import { motion } from "framer-motion"
+import Library from "../components/Library"
 function Home() {
   return (
     <motion.div
@@ -157,8 +158,9 @@ function Home() {
         </div>
       </div>
 
-      <NewRelease />
-      <Popular />
+  
+   
+    
     </motion.div>
   )
 }

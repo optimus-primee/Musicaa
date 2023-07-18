@@ -1,6 +1,6 @@
 import "./App.css";
 import Sidebar from "./components/Sidebar";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import Home from "./Pages/Home";
 import { setClientToken } from "./components/spotify";
 import Login from "./components/auth/Login";
@@ -44,6 +44,7 @@ function App() {
           <Sidebar />
 
           <AnimatedRoutes />
+        
         </Router>
 
         <Actions />

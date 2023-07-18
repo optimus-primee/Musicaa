@@ -6,6 +6,7 @@ import Currently from "./Currently"
 import Current from "./Current"
 import Collections from "./Collections"
 import { AnimatePresence } from "framer-motion"
+import Search from "./Search"
 
 
 function AnimatedRoutes() {
@@ -20,6 +21,7 @@ function AnimatedRoutes() {
           <Route path='/current' element={<Current/>}/>
 
           <Route path='/currently' element={<Currently />} />
+          <Route path='/lol' element={<Search />} />
         </Routes>
       </AnimatePresence>
     </div>

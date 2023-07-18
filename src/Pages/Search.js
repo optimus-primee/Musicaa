@@ -30,16 +30,17 @@ function Search() {
   }
   return (
     <div >
-      <form>
+      <form className="flex">
         <input
           className='outline-0 bg-transparent w-[100%] ml-6 text-[#EFEEE040] text-sm font-semibold'
           type='text'
           placeholder='Search artists'
-          onKeyPress={(event) => {
-            if (event.key === "Enter") {
-              se()
+          onKeyPress={event=>{
+            if(event.key="Enter"){
+              console.log("yes")
             }
           }}
+          
           onChange={(event) => setSearchInput(event.target.value)}
         />
         <button
@@ -51,6 +52,7 @@ function Search() {
         </button>
       </form>
       <div>
+        <h5>hhh</h5>
         {albums.map((album, i) => {
           return (
             
@@ -58,7 +60,8 @@ function Search() {
               <div className='w-[100%] h-[234px]'>
                 <img className='w-[100%] h-[100%] rounded-[20px] object-cover ' src={album.images[0].url} alt='' />
                 
-                <div className="absolute bottom-[22px] left-[19px]">
+                <div className="">
+                  <h5></h5>
                 <h6 className="text-[24px] leading-[24px]">{album.name}</h6>
                 <h6 className="text-[10px] leading-[12px]">{album.name}</h6>
                 </div>
