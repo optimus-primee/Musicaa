@@ -35,7 +35,7 @@ function App() {
       setClientToken(token);
     }
   }, []);
-       return token ? (
+       return ! token ? (
     <Login />
   ) : (
     <>
