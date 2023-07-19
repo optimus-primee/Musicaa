@@ -2,29 +2,38 @@ import React, { useContext } from "react"
 import playerContext from "../../context/playerContext"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
-import axios from "axios"
+import APIKit from "../spotify";
 
 function Popular() {
   const { SetCurrent, currentSong, songslist } = useContext(playerContext)
-  const [width, setWidth] = useState(0)
-  const [yinka,setYinka] = useState("")
+ const [albums,setAlbums] = useState([])
+ const [id,setId] = useState("")
+
+ const [width, setWidth] = useState(0);
   const container = useRef()
 
   useEffect(() => {
-    setWidth(container.current.scrollWidth - container.current.offsetWidth)
-  }, [])
+    setWidth(container.current.scrollWidth - container.current.offsetWidth);
+    const re = async () => {
+      await APIKit.get("tracks").then(
+        (response) => {
+          console.log(response);
+          setAlbums(response.data);
+          console.log(albums);
+        
+        }
+      );
+    };
+    re();
+  }, []);
 
-    axios.get("https://musica-api.up.railway.app/new").then((response) => {
-      setYinka(response.data[0].artist)
-      
-    })
-    console.log("this is wat would represent the variable " + yinka)
+  
 
   return (
     <>
       <div className='mt-[43px] px-[23px] sm:ml-[6rem] text-white'>
         <h2 className='mb-[13px] font-bold text-[24px]'>
-          {yinka}
+          Popular
         </h2>
         <motion.div className=''>
           <motion.div

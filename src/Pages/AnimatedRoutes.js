@@ -21,7 +21,7 @@ function AnimatedRoutes() {
           <Route path='/current' element={<Current/>}/>
 
           <Route path='/currently' element={<Currently />} />
-          <Route path='/lol' element={<Search />} />
+          <Route path='/search' element={<Search />} />
         </Routes>
       </AnimatePresence>
     </div>
