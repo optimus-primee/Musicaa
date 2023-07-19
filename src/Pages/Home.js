@@ -22,7 +22,11 @@ import Popular from "../components/playlist/Popular"
 import Currentlyplaying from "../Images/Hypertension.jpeg"
 import { motion } from "framer-motion"
 import Library from "../components/Library"
+
 function Home() {
+ 
+
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -155,12 +159,13 @@ function Home() {
               </div>
             </div>
           </div>
-          <NewRelease/>
-          <Popular/>
+     
         </div>
+       
       </div>
 
-  
+      <NewRelease/>
+          <Popular/>
    
     
     </motion.div>

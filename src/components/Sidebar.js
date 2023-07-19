@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import APIKit from "./spotify";
+
 import Logo from "../Images/logo.svg";
 import { SidebarData } from "../data/SidebarData";
 import { Link } from "react-router-dom";
@@ -11,11 +11,7 @@ function Sidebar() {
   const [image, setImage] = useState(
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLAY3C19kL0nV2bI_plU3_YFCtra0dpsYkg&usqp=CAU"
   );
-  useEffect(() => {
-    APIKit.get("me/playlists").then((response) => {
-      console.log(response.data);
-    });
-  }, []);
+
   const [navbar, setNavbar] = useState(false);
 
   const showSidebar = () => setNavbar(!navbar);

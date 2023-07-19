@@ -175,3 +175,226 @@ export default App;
             </div>
           </div>
         </div>
+
+
+
+        <h2 className='mb-[13px] font-bold text-[24px]'>New Release.</h2>
+        <motion.div className=''>
+          <motion.div
+            ref={container}
+            className='w-[1125px] flex cursor-grab overflow-hidden   '
+          >
+            <motion.div
+              className='inline-flex'
+              drag='x'
+              dragConstraints={{ right: 0, left: -width }}
+              whileTap={{ cursor: "grabbing" }}
+            >
+              <ul className='flex '>
+                {songslist.map((song, i) => (
+                  <li 
+                    className={
+                      "songContainer " + (currentSong === i ? "selected" : "")
+                    }
+                    key={i}
+                    onClick={() => {
+                      SetCurrent(i)
+                    }}
+                  >
+                    <div className='tmbn_song'>
+                      <i className='fas fa-play'></i>
+                    </div>
+                    <div className='songmeta_playlist'>
+                      
+                      <div className='w-[153px] mr-[30px]'>
+                        <div className='w-[100%] h-[153px]'>
+                        
+                        <img  className='w-[100%] h-[100%] object-cover pointer-events-none rounded-[25px] ' src={song.img} alt="" />
+                        
+                        </div>
+                      </div>
+                      <h6 className='text-[12px] text-[#EFEEE0]'>{song.title}</h6>
+                    </div>
+                   
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+        
+
+
+        <h2 className='mb-[13px] font-bold text-[24px]'>New Release.</h2>
+        <motion.div className=''>
+          <motion.div
+            ref={container}
+            className='w-[1125px] flex cursor-grab overflow-hidden   '
+          >
+            <motion.div
+              className='inline-flex'
+              drag='x'
+              dragConstraints={{ right: 0, left: -width }}
+              whileTap={{ cursor: "grabbing" }}
+            >
+              <ul className='flex '>
+                {songslist.map((song, i) => (
+                  <li 
+                    className={
+                      "songContainer " + (currentSong === i ? "selected" : "")
+                    }
+                    key={i}
+                    onClick={() => {
+                      SetCurrent(i)
+                    }}
+                  >
+                    <div className='tmbn_song'>
+                      <i className='fas fa-play'></i>
+                    </div>
+                    <div className='songmeta_playlist'>
+                      
+                      <div className='w-[153px] mr-[30px]'>
+                        <div className='w-[100%] h-[153px]'>
+                        
+                        <img  className='w-[100%] h-[100%] object-cover pointer-events-none rounded-[25px] ' src={song.img} alt="" />
+                        
+                        </div>
+                      </div>
+                      <h6 className='text-[12px] text-[#EFEEE0]'>{song.title}</h6>
+                    </div>
+                   
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+        
+        useEffect(() => {
+    setWidth(container.current.scrollWidth - container.current.offsetWidth);
+    APIKit.get("browse/new-releases").then((response) => {
+      console.log(response.data);
+      setNewRelease(response.data.albums.items);
+    });
+    console.log(newRelease);
+  }, []);
+  .then((response) => {
+        console.log(response.data);
+        setNewReleases(response.data.albums.items[0].artists[0].id);
+        console.log(newReleases);}
+
+        import React, { useContext } from "react";
+import playerContext from "../../context/playerContext";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import APIKit from "../spotify";
+
+function NewRelease() {
+  const { SetCurrent, currentSong, songslist } = useContext(playerContext);
+  const [newReleases, setNewReleases] = useState([]);
+  const [width, setWidth] = useState(0);
+  const container = useRef();
+
+  useEffect(() => {
+    setWidth(container.current.scrollWidth - container.current.offsetWidth);
+    const re = async () => {
+      await APIKit.get("browse/new-releases" + "?&limit=10&offset=0")
+      .then((response) => {
+        console.log(response);
+        setNewReleases(response.data.albums.items);
+        console.log(newReleases)
+        
+      });
+    };
+    re();
+  }, []);
+
+  return (
+    <>
+      <div className="mt-[43px] px-[23px] sm:ml-[6rem] text-white">
+  {newReleases.map((newRelease,i)=>{
+    return(
+      <div>
+        <h5>{newRelease.name}</h5>
+        <img src={newRelease.images[0].url} />
+      </div>
+    )
+  })}
+
+        <h2 className="mb-[13px] font-bold text-[24px]">New Release.</h2>
+        <motion.div className="">
+          <motion.div
+            ref={container}
+            className="w-[1125px] flex cursor-grab overflow-hidden   "
+          >
+            <motion.div
+              className="inline-flex"
+              drag="x"
+              dragConstraints={{ right: 0, left: -width }}
+              whileTap={{ cursor: "grabbing" }}
+            >
+              <ul className="flex ">
+                {songslist.map((song, i) => (
+                  <li
+                    className={
+                      "songContainer " + (currentSong === i ? "selected" : "")
+                    }
+                    key={i}
+                    onClick={() => {
+                      SetCurrent(i);
+                    }}
+                  >
+                    <div className="tmbn_song">
+                      <i className="fas fa-play"></i>
+                    </div>
+                    <div className="songmeta_playlist">
+                      <div className="w-[153px] mr-[30px]">
+                        <div className="w-[100%] h-[153px]">
+                          <img
+                            className="w-[100%] h-[100%] object-cover pointer-events-none rounded-[25px] "
+                            src={newRelease.images[0].url}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                      <h6 className="text-[12px] text-[#EFEEE0]">
+                      {newRelease.name}
+                      </h6>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </>
+  );
+}
+
+export default NewRelease;
+
+
+import axios from "axios";
+
+const authEndpoint = "https://accounts.spotify.com/authorize?";
+const clientId = "6d4e855be53e4035af5126e2451c8682";
+const redirectUri = "http://localhost:3000";
+const scopes = ["user-library-read", "playlist-read-private"];
+
+export const loginEndpoint = `${authEndpoint}client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+  "%20"
+)}&response_type=token&show_dialog=true`;
+
+const apiClient = axios.create({
+  baseURL: "https://api.spotify.com/v1/", 
+});
+
+export const setClientToken = (token) => {
+  apiClient.interceptors.request.use(async function (config) {
+    config.headers.Authorization = "Bearer " + token;
+    return config;
+  });
+};
+
+export default apiClien
